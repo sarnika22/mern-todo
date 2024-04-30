@@ -5,7 +5,6 @@ import Create from "./Create";
 import axios from "axios";
 import {
   BsCircleFill,
-  BsFillCheckCircleFill,
   BsFillTrashFill,
 } from "react-icons/bs";
 
@@ -14,19 +13,19 @@ function Home() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/get")
-      .then((result) => setTodos(result.data))
-      .catch((err) => console.log(err));
+      .then(result => setTodos(result.data))
+      .catch(err => console.log(err));
   }, []);
 
   const handleEdit = (id) => {
     axios
-      .put("http://localhost:3001/get")
-      .then((result) => setTodos(result.data))
-      .catch((err) => console.log(err));
+      .put("http://localhost:3001/update" + id)
+      .then((result) => {location.reload()})
+      .catch((err) => console.log(err))
   };
 
   return (
-    <div>
+    <div className="home">
       <h2>Todo List</h2>
       <Create />
       {todos.length === 0 ? (
