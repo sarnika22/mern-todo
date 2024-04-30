@@ -6,6 +6,7 @@ import axios from "axios";
 import {
   BsCircleFill,
   BsFillTrashFill,
+  BsCheckCircleFill,
 } from "react-icons/bs";
 
 function Home() {
@@ -13,15 +14,15 @@ function Home() {
   useEffect(() => {
     axios
       .get("http://localhost:3001/get")
-      .then(result => setTodos(result.data))
-      .catch(err => console.log(err));
+      .then((result) => setTodos(result.data))
+      .catch((err) => console.log(err));
   }, []);
 
   const handleEdit = (id) => {
     axios
       .put("http://localhost:3001/update" + id)
       .then((result) => console.log(result))
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -38,7 +39,12 @@ function Home() {
         todos.map((todo) => (
           <div className="task">
             <div className="checkbox" onClick={() => handleEdit(todo._id)}>
-              <BsCircleFill className="icon" />
+              {todo.done ? (
+                <BsCheckCircleFill className="icon" />
+              ) : (
+                <BsCircleFill className="icon" />
+              )}
+
               <p>{todo.task}</p>
             </div>
             <div>
