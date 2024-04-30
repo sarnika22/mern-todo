@@ -7,7 +7,7 @@ const TodoModel = require("./models/Todo");
 //create app
 const app = express();
 app.use(cors());
-app.use(express.json); //when data passed i'll bw converted to json format
+app.use(express.json()); //when data passed i'll bw converted to json format
 
 mongoose.connect("mongodb://127.0.0.1:27017/test");
 app.post("/add", (req, res) => {
