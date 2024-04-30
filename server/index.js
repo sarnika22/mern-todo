@@ -27,7 +27,7 @@ app.post("/add", (req, res) => {
   console.log(task);
   TodoModel.create({
     task: task,
-  })
+  })  
     .then((result) => res.json(result))
     .catch((err) => res.json(err));
 });
