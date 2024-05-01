@@ -19,9 +19,10 @@ function Home() {
   }, []);
 
   const handleEdit = (id) => {
+    console.log(id);
     axios
-      .put("http://localhost:3001/update" + id)
-      .then((result) => console.log(result))
+      .put("http://localhost:3001/update/" + id)
+      .then(result=>{location.reload()})
       .catch((err) => console.log(err));
   };
 
